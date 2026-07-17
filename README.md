@@ -8,9 +8,9 @@ buttons control a dandelion particle effect.
 
 **https://dawnyeeeee.github.io/PaperTouch_wildmill/**
 
-<!-- Add your QR code image here, e.g.
-<img src="Wildmill.png" alt="QR code" width="240">
--->
+Scan to open on a tablet or phone:
+
+<img src="Wilmill_widget.png" alt="QR code for the wildmill widget page" width="240">
 
 ## Zones
 
