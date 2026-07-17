@@ -51,17 +51,18 @@ const ZONE_RIGHT_FRAC = 0.8;  // right zone is x in (80%, 100%]
 const FLASH_DURATION = 250;   // ms of highlight after a pad is triggered
 const MAX_PARTICLES = 1000;
 
-// Soft, low-saturation (Morandi-style) particle colors.
+// Soft but clearly visible particle colors: pastel hues with enough
+// saturation and brightness to read on the near-black background.
 // Index 0 is the default gray-white used after reset.
 const SEED_COLORS = [
-  [230, 228, 220], // gray white (default)
-  [196, 178, 188], // dusty mauve
-  [168, 187, 178], // sage green
-  [178, 190, 205], // gray blue
-  [214, 190, 165], // sand
-  [204, 168, 158], // clay pink
-  [172, 176, 158], // olive gray
-  [188, 168, 196], // faded lilac
+  [245, 243, 235], // warm white (default)
+  [228, 158, 192], // rose pink
+  [150, 214, 172], // soft mint green
+  [148, 186, 235], // powder blue
+  [238, 198, 130], // warm apricot
+  [235, 152, 128], // muted coral
+  [198, 212, 126], // pale chartreuse
+  [196, 156, 228], // soft lavender
 ];
 
 // ---------------------------------------------------------------------------
@@ -244,7 +245,7 @@ function updateAndDrawParticles() {
     const alpha = age < 0.15 ? age / 0.15 : 1 - (age - 0.15) / 0.85;
     const grow = 1 + age * 1.6; // seeds grow slightly as they float away
 
-    drawSeed(pt.x, pt.y, pt.size * grow, pt.rot, cr, cg, cb, alpha * 220);
+    drawSeed(pt.x, pt.y, pt.size * grow, pt.rot, cr, cg, cb, alpha * 250);
   }
 }
 
@@ -254,8 +255,8 @@ function drawSeed(x, y, s, rot, r, g, b, alpha) {
   translate(x, y);
   rotate(rot);
 
-  stroke(r, g, b, alpha * 0.75);
-  strokeWeight(0.8);
+  stroke(r, g, b, alpha * 0.9);
+  strokeWeight(1);
   const filaments = 5;
   for (let i = 0; i < filaments; i++) {
     const a = -HALF_PI + ((i - (filaments - 1) / 2) * 0.5);
@@ -278,16 +279,8 @@ function draw() {
   if (blowingTouches.size > 0) emitParticles();
   updateAndDrawParticles();
 
-  drawZoneDividers();
   drawPlacementCircles();
   drawStatusBar();
-}
-
-function drawZoneDividers() {
-  stroke(255, 18);
-  strokeWeight(1);
-  line(width * ZONE_LEFT_FRAC, 0, width * ZONE_LEFT_FRAC, height);
-  line(width * ZONE_RIGHT_FRAC, 0, width * ZONE_RIGHT_FRAC, height);
 }
 
 function drawPlacementCircles() {
