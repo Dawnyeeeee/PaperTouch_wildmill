@@ -1,4 +1,4 @@
-# PaperTouch Wildmill Widget
+# PaperTouch Windmill Widget
 
 An interactive page for [PaperTouch](https://doi.org/10.1145/3613904.3642571)
 paper mechanisms: a blow-driven paper windmill, a rotary knob, and two paper
